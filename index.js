@@ -6,7 +6,7 @@ class WDElement extends HTMLElement {
   }
 
   connectedCallback() {
-    this.textContent = ':wave:'
+    this.textContent = 'test'
   }
 
   disconnectedCallback() {}
