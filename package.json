@@ -2,8 +2,8 @@
   "name": "@lisongx/wd-element",
   "version": "0.0.1",
   "description": "Boilerplate for creating a custom element.",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/wd-elements.umd.js",
+  "module": "dist/wd-elements.js",
   "types": "index.d.ts",
   "license": "MIT",
   "repository": "lisongx/wd-element",
@@ -16,10 +16,8 @@
     "clean": "rm -rf dist",
     "lint": "github-lint",
     "prebuild": "npm run clean && npm run lint && mkdir dist",
-    "build-watch": "BABEL_ENV=umd babel index.js -o dist/index.umd.js --watch",
-    "build-umd": "BABEL_ENV=umd babel index.js -o dist/index.umd.js",
-    "build-esm": "BABEL_ENV=esm babel index.js -o dist/index.esm.js",
-    "build": "npm run build-umd && npm run build-esm && cp index.js.flow dist/index.esm.js.flow && cp index.js.flow dist/index.umd.js.flow",
+    "watch": "rollup -c --watch",
+    "build": "rollup -c",
     "pretest": "npm run build",
     "test": "karma start test/karma.config.js",
     "prepublishOnly": "npm run build"
@@ -38,6 +36,9 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "rollup": "^1.16.6",
+    "rollup-plugin-babel": "^4.3.3",
+    "webcomponents.js": "^0.7.23"
   }
 }
