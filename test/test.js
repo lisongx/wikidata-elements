@@ -1,19 +1,19 @@
-describe('custom-element', function() {
+describe('wd-element', function() {
   describe('element creation', function() {
     it('creates from document.createElement', function() {
-      const el = document.createElement('custom-element')
-      assert.equal('CUSTOM-ELEMENT', el.nodeName)
+      const el = document.createElement('wd-element')
+      assert.equal('WD-ELEMENT', el.nodeName)
     })
 
     it('creates from constructor', function() {
-      const el = new window.CustomElementElement()
-      assert.equal('CUSTOM-ELEMENT', el.nodeName)
+      const el = new window.WDElement()
+      assert.equal('WD-ELEMENT', el.nodeName)
     })
   })
 
   describe('after tree insertion', function() {
     beforeEach(function() {
-      document.body.innerHTML = '<custom-element></custom-element>'
+      document.body.innerHTML = '<wd-element></wd-element>'
     })
 
     afterEach(function() {
@@ -21,7 +21,7 @@ describe('custom-element', function() {
     })
 
     it('initiates', function() {
-      const ce = document.querySelector('custom-element')
+      const ce = document.querySelector('wd-element')
       assert.equal(ce.textContent, ':wave:')
     })
   })

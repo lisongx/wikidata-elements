@@ -1,1 +1,1 @@
-export default class CustomElementElement extends HTMLElement { }
+export default class WDElement extends HTMLElement {

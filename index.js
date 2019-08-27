@@ -1,6 +1,6 @@
 /* @flow strict */
 
-class CustomElementElement extends HTMLElement {
+class WDElement extends HTMLElement {
   constructor() {
     super()
   }
@@ -12,9 +12,9 @@ class CustomElementElement extends HTMLElement {
   disconnectedCallback() {}
 }
 
-export default CustomElementElement
+export default WDElement
 
-if (!window.customElements.get('custom-element')) {
-  window.CustomElementElement = CustomElementElement
-  window.customElements.define('custom-element', CustomElementElement)
+if (!window.customElements.get('wd-element')) {
+  window.WDElement = WDElement
+  window.customElements.define('wd-element', WDElement)
 }
