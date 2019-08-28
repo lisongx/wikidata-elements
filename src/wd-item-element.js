@@ -1,6 +1,4 @@
-/* @flow strict */
-
-import wdk from 'wikidata-sdk'
+import { fetchEntityByItemId } from './utils'
 
 class WDItemElement extends HTMLElement {
   constructor() {
@@ -8,11 +6,18 @@ class WDItemElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const url = wdk.getEntities('Q42')
-    this.textContent = url
+    const itemId = this.getAttribute('item-id')
+    const lang = this.getAttribute('label-lang')
+
+    fetchEntityByItemId(itemId).then(value => {
+      const label = value.labels[lang]
+      if (label) {
+        this.textContent = label
+      }
+    })
   }
 
-  disconnectedCallback() {}
+  disconnectedCallback() { }
 }
 
 export default WDItemElement

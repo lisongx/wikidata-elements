@@ -12,6 +12,7 @@
     "index.d.ts"
   ],
   "scripts": {
+    "prettier": "prettier --write **/*.js",
     "dev": "npx live-server --open=examples",
     "clean": "rm -rf dist",
     "lint": "github-lint",
@@ -45,6 +46,7 @@
     "webcomponents.js": "^0.7.23"
   },
   "dependencies": {
+    "wikibase-sdk": "^7.0.13",
     "wikidata-sdk": "^7.0.7"
   }
 }
