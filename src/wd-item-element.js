@@ -1,12 +1,15 @@
 /* @flow strict */
 
+import wdk from 'wikidata-sdk'
+
 class WDItemElement extends HTMLElement {
   constructor() {
     super()
   }
 
   connectedCallback() {
-    this.textContent = 'test'
+    const url = wdk.getEntities('Q42')
+    this.textContent = url
   }
 
   disconnectedCallback() {}

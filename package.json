@@ -39,6 +39,12 @@
     "mocha": "^6.1.4",
     "rollup": "^1.16.6",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "webcomponents.js": "^0.7.23"
+  },
+  "dependencies": {
+    "wikidata-sdk": "^7.0.7"
   }
 }
