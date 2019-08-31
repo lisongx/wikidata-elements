@@ -1,4 +1,4 @@
-import { fetchEntityByItemId } from './utils'
+import {fetchEntityByItemId, entityToLabel, entityToProperty} from './utils'
 
 class WDItemElement extends HTMLElement {
   constructor() {
@@ -7,17 +7,33 @@ class WDItemElement extends HTMLElement {
 
   connectedCallback() {
     const itemId = this.getAttribute('item-id')
-    const lang = this.getAttribute('label-lang')
+    this.renderItem(itemId)
+  }
 
-    fetchEntityByItemId(itemId).then(value => {
-      const label = value.labels[lang]
-      if (label) {
-        this.textContent = label
+  renderItem(itemId) {
+    const property = this.getAttribute('property')
+    const displayLabel = this.hasAttribute('label')
+    const lang = this.getAttribute('lang')
+
+    fetchEntityByItemId(itemId).then(entity => {
+      let q = null
+
+      if (displayLabel) {
+        q = entityToLabel(entity, lang)
+      } else if (property) {
+        q = entityToProperty(entity, property, lang)
+      } else {
+        this.textContent = ''
+        return
       }
+      q.then(value => {
+        console.log('qqq  ', this, value)
+        this.textContent = value
+      })
     })
   }
 
-  disconnectedCallback() { }
+  disconnectedCallback() {}
 }
 
 export default WDItemElement

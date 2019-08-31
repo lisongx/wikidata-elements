@@ -2,10 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>wd-element demo</title>
+  <title>wd-elements Demo</title>
+  <style>
+    table {
+      width: 600px;
+    }
+
+    table xmp {
+      font-size: 9px;
+    }
+  </style>
 </head>
 <body>
-  <wd-item item-id="Q42" label-lang='zh-hans'></wd-item>
+
+
+    <table>
+        <tr>
+          <th>HTML</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>
+              <xmp>
+                  <wd-item item-id="Q42" label lang='en' />
+              </xmp>
+          </td>
+          <td>
+            <wd-item item-id="Q42" label lang='en' />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <xmp>
+                <wd-item item-id="Q42" property="P21" lang='zh-hans' />
+            </xmp>
+          </td>
+          <td>
+              <wd-item item-id="Q42" property="P21" lang='zh-hans' />
+          </td>
+        </tr>
+
+        <tr>
+            <td>
+              <xmp>
+                  <wd-item item-id="Q42" property="P570" lang='en' />
+              </xmp>
+            </td>
+            <td>
+                <wd-item item-id="Q42" property="P570" lang='en' />
+            </td>
+          </tr>
+      </table>
+
 
   <!-- GitHub Pages development script, uncomment when running example locally and comment out the production one -->
   <script src="../dist/wd-elements.umd.js"></script>

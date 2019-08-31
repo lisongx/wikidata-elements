@@ -1,21 +1,35 @@
 import wdk from 'wikidata-sdk'
 
-const fetchEntitiesByItemIds = itemIds => {
-  const url = wdk.getEntities(itemIds)
-  return fetch(url)
-    .then(response => response.json())
-    .then(res => {
-      const { entities } = res
-      const simplifiedEntities = wdk.simplify.entities(entities)
-      console.log(entities, simplifiedEntities)
-      return simplifiedEntities
-    })
+async function entityToProperty(entity, property, lang) {
+  const propertyValue = entity.claims[property]
+  if (wdk.isItemId(propertyValue)) {
+    let item = await fetchEntityByItemId(propertyValue)
+    let value = await entityToLabel(item, lang)
+    return value
+  } else {
+    return propertyValue
+  }
 }
 
-const fetchEntityByItemId = itemId => {
-  return fetchEntitiesByItemIds([itemId]).then(entities => entities[itemId])
+async function entityToLabel(entity, lang) {
+  console.log('item')
+  return entity.labels[lang]
+}
+
+async function fetchEntitiesByItemIds(itemIds) {
+  const url = wdk.getEntities(itemIds)
+  let response = await fetch(url)
+  let res = await response.json()
+  const {entities} = res
+  const simplifiedEntities = wdk.simplify.entities(entities)
+  return simplifiedEntities
+}
+
+async function fetchEntityByItemId(itemId) {
+  let entities = await fetchEntitiesByItemIds([itemId])
+  return entities[itemId]
 }
 
 export default fetchEntitiesByItemIds
 
-export { fetchEntityByItemId }
+export {fetchEntityByItemId, entityToProperty, entityToLabel}
