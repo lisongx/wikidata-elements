@@ -27,7 +27,6 @@ class WDItemElement extends HTMLElement {
         return
       }
       q.then(value => {
-        console.log('qqq  ', this, value)
         this.textContent = value
       })
     })
