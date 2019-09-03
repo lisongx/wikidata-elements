@@ -19,6 +19,7 @@
     "watch": "rollup -c --watch",
     "build": "rollup -c",
     "pretest": "npm run build",
+    "record-request": "polly listen",
     "test": "karma start test/karma.config.js",
     "prepublishOnly": "npm run build"
   },
@@ -27,6 +28,7 @@
     "@babel/core": "^7.4.5",
     "@babel/plugin-transform-modules-umd": "^7.2.0",
     "@pollyjs/adapter-fetch": "^2.6.2",
+    "@pollyjs/cli": "^2.6.0",
     "@pollyjs/core": "^2.6.2",
     "@pollyjs/persister-fs": "^2.6.2",
     "@pollyjs/persister-local-storage": "^2.6.2",
