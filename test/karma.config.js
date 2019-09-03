@@ -1,7 +1,10 @@
 module.exports = function(config) {
   config.set({
     frameworks: ['mocha', 'chai'],
-    files: ['../dist/wd-elements.umd.js', 'test.js'],
+    files: [
+      '../node_modules/@pollyjs/core/dist/umd/pollyjs-core.js',
+      '../dist/wd-elements.umd.js', 'test.js'
+    ],
     reporters: ['mocha'],
     port: 9876,
     colors: true,
