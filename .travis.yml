@@ -3,7 +3,7 @@ sudo: required
 node_js:
   - "node"
 addons:
-  chrome: stable
+  chrome: beta
 cache:
   directories:
     - node_modules
