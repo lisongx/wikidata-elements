@@ -8,7 +8,10 @@ describe('wd-item', function() {
     adapters: [FetchAdapter],
     recordIfMissing: true,
     expiryStrategy: 'record',
-    persister: RESTPersister
+    persister: RESTPersister,
+    matchRequestsBy: {
+      headers: false
+    }
   })
 
   describe('element creation', function() {
