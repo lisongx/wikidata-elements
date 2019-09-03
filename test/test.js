@@ -1,12 +1,15 @@
-const polly = window['@pollyjs/core']
+const pollyjs = window['@pollyjs/core']
+const FetchAdapter = window['@pollyjs/adapter-fetch']
+const RESTPersister = window['@pollyjs/persister-rest']
+const Polly = pollyjs.Polly
 
 describe('wd-item', function() {
-  // console.log('polly', polly)
-
-  // polly.setupMocha({
-  //   adapters: ['fetch'],
-  //   // persister: 'local-storage',
-  // })
+  pollyjs.setupMocha({
+    adapters: [FetchAdapter],
+    recordIfMissing: true,
+    expiryStrategy: 'record',
+    persister: RESTPersister
+  })
 
   describe('element creation', function() {
     it('creates from document.createElement', function() {
@@ -18,20 +21,49 @@ describe('wd-item', function() {
       const el = new window.WDItemElement()
       assert.equal('WD-ITEM', el.nodeName)
     })
-
   })
 
-  describe('after tree insertion', function() {
-    beforeEach(function() {
+  describe('wd-item label display', function() {
+    it('use en lang', function(done) {
       document.body.innerHTML = '<wd-item item-id="Q42" label lang="en"/>'
-    })
-
-    it('initiates', function(done) {
       const item = document.querySelector('wd-item')
+      assert.equal(item.textContent, '')
       setTimeout(() => {
         assert.equal(item.textContent, 'Douglas Adams')
-        done();
-      }, 1000);
+        done()
+      }, 1500)
+    })
+
+    it('use zh-hans', function(done) {
+      document.body.innerHTML = '<wd-item item-id="Q42" label lang="zh-hans"/>'
+      const item = document.querySelector('wd-item')
+      assert.equal(item.textContent, '')
+      setTimeout(() => {
+        assert.equal(item.textContent, '道格拉斯·亚当斯')
+        done()
+      }, 1500)
+    })
+  })
+
+  describe('wd-item property display', function() {
+    it('should render external id property', function(done) {
+      document.body.innerHTML = '<wd-item item-id="Q42" property="P345" />'
+      const item = document.querySelector('wd-item')
+      assert.equal(item.textContent, '')
+      setTimeout(() => {
+        assert.equal(item.textContent, 'nm0010930')
+        done()
+      }, 1500)
+    })
+
+    it('should render the label of the reference for the property', function(done) {
+      document.body.innerHTML = '<wd-item item-id="Q42" property="P25" lang="en" />'
+      const item = document.querySelector('wd-item')
+      assert.equal(item.textContent, '')
+      setTimeout(() => {
+        assert.equal(item.textContent, 'Janet Adams')
+        done()
+      }, 1500)
     })
   })
 })

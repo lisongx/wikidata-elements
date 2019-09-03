@@ -3,7 +3,10 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai'],
     files: [
       '../node_modules/@pollyjs/core/dist/umd/pollyjs-core.js',
-      '../dist/wd-elements.umd.js', 'test.js'
+      '../node_modules/@pollyjs/adapter-fetch/dist/umd/pollyjs-adapter-fetch.js',
+      '../node_modules/@pollyjs/persister-rest/dist/umd/pollyjs-persister-rest.js',
+      '../dist/wd-elements.umd.js',
+      'test.js'
     ],
     reporters: ['mocha'],
     port: 9876,

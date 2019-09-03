@@ -12,7 +12,6 @@ async function entityToProperty(entity, property, lang) {
 }
 
 async function entityToLabel(entity, lang) {
-  console.log('item')
   return entity.labels[lang]
 }
 
