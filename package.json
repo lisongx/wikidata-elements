@@ -19,9 +19,10 @@
     "watch": "rollup -c --watch",
     "build": "rollup -c",
     "pretest": "npm run build",
-    "record-request": "polly listen",
     "test": "karma start test/karma.config.js",
-    "prepublishOnly": "npm run build"
+    "listen-request": "polly listen",
+    "prepublishOnly": "npm run build",
+    "ci": "start-server-and-test 'polly listen -q' 3000 'npm run test'"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -47,6 +48,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "start-server-and-test": "^1.10.0",
     "webcomponents.js": "^0.7.23"
   },
   "dependencies": {
