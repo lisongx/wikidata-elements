@@ -1,4 +1,4 @@
-import {fetchEntityByItemId, entityToLabel, entityToProperty} from './utils'
+import {fetchEntityByItemId} from './utils'
 
 class WDItemElement extends HTMLElement {
   constructor() {
@@ -19,9 +19,9 @@ class WDItemElement extends HTMLElement {
       let q = null
 
       if (displayLabel) {
-        q = entityToLabel(entity, lang)
+        q = entity.getLabel(lang)
       } else if (property) {
-        q = entityToProperty(entity, property, lang)
+        q = entity.getProperty(property, lang)
       } else {
         this.textContent = ''
         return
