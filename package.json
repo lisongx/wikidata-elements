@@ -1,12 +1,12 @@
 {
-  "name": "@lisongx/wd-element",
+  "name": "wd-elements",
   "version": "0.0.1",
-  "description": "Boilerplate for creating a custom element.",
+  "description": "Web Component",
   "main": "dist/wd-elements.umd.js",
   "module": "dist/wd-elements.js",
   "types": "index.d.ts",
   "license": "MIT",
-  "repository": "lisongx/wd-element",
+  "repository": "lisongx/wd-elements",
   "files": [
     "dist",
     "index.d.ts"
@@ -52,7 +52,6 @@
     "webcomponents.js": "^0.7.23"
   },
   "dependencies": {
-    "wikibase-sdk": "^7.0.13",
-    "wikidata-sdk": "^7.0.7"
+    "wikibase-sdk": "^7.1.0"
   }
 }
