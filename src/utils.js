@@ -1,6 +1,7 @@
 import WBK from 'wikibase-sdk'
 import WikibaseItem from './WikibaseItem'
 
+// TODO: Expose API to allow user to set custom endpoint
 const wbk = WBK({
   instance: 'https://www.wikidata.org',
   sparqlEndpoint: 'https://query.wikidata.org/sparql'
