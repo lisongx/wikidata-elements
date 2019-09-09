@@ -1,5 +1,4 @@
-import wbk from 'wikidata-sdk'
-import {fetchEntityByItemId} from './utils'
+import {fetchEntityByItemId, wbk} from './utils'
 
 class WikibaseItem {
   constructor(entity) {
