@@ -1,5 +1,5 @@
 import WBK from 'wikibase-sdk'
-import WikibaseItem from './WikibaseItem'
+import WikibaseEntity from './WikibaseEntity'
 
 // TODO: Expose API to allow user to set custom endpoint
 const wbk = WBK({
@@ -7,23 +7,23 @@ const wbk = WBK({
   sparqlEndpoint: 'https://query.wikidata.org/sparql'
 })
 
-async function fetchEntitiesByItemIds(itemIds) {
+async function fetchEntitiesByIds(itemIds) {
   const url = wbk.getEntities(itemIds)
   let response = await fetch(url)
   let res = await response.json()
   const {entities} = res
   const entityInstances = Object()
   for (let [itemId, entity] of Object.entries(entities)) {
-    entityInstances[itemId] = new WikibaseItem(entity)
+    entityInstances[itemId] = new WikibaseEntity(entity)
   }
   return entityInstances
 }
 
-async function fetchEntityByItemId(itemId) {
-  let entities = await fetchEntitiesByItemIds([itemId])
+async function fetchEntityById(itemId) {
+  let entities = await fetchEntitiesByIds([itemId])
   return entities[itemId]
 }
 
-export default fetchEntitiesByItemIds
+export default fetchEntitiesByIds
 
-export {fetchEntityByItemId, wbk}
+export {fetchEntityById, wbk}

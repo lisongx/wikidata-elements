@@ -1,5 +1,5 @@
 /* @flow strict */
 
-import WDItemElement from './wd-item-element'
+import WDEntityElement from './wd-entity-element'
 
-export {WDItemElement}
+export {WDEntityElement}

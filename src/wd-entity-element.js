@@ -1,21 +1,21 @@
-import {fetchEntityByItemId} from './utils'
+import {fetchEntityById} from './utils'
 
-class WDItemElement extends HTMLElement {
+class WDEntityElement extends HTMLElement {
   constructor() {
     super()
   }
 
   connectedCallback() {
-    const itemId = this.getAttribute('item-id')
-    this.renderItem(itemId)
+    const entityId = this.getAttribute('id')
+    this.renderItem(entityId)
   }
 
-  renderItem(itemId) {
+  renderItem(entityId) {
     const property = this.getAttribute('property')
     const displayLabel = this.hasAttribute('label')
     const lang = this.getAttribute('lang')
 
-    fetchEntityByItemId(itemId).then(entity => {
+    fetchEntityById(entityId).then(entity => {
       let q = null
 
       if (displayLabel) {
@@ -35,9 +35,9 @@ class WDItemElement extends HTMLElement {
   disconnectedCallback() {}
 }
 
-export default WDItemElement
+export default WDEntityElement
 
-if (!window.customElements.get('wd-item')) {
-  window.WDItemElement = WDItemElement
-  window.customElements.define('wd-item', WDItemElement)
+if (!window.customElements.get('wd-entity')) {
+  window.WDEntityElement = WDEntityElement
+  window.customElements.define('wd-entity', WDEntityElement)
 }

@@ -1,6 +1,6 @@
-import {fetchEntityByItemId, wbk} from './utils'
+import {fetchEntityById, wbk} from './utils'
 
-class WikibaseItem {
+class WikibaseEntity {
   constructor(entity) {
     //   Original entitiy saved for future usage
     this.entity = entity
@@ -15,11 +15,11 @@ class WikibaseItem {
     const propertyValue = this.simplifyEntity.claims[property]
 
     if (wbk.isItemId(propertyValue)) {
-      return fetchEntityByItemId(propertyValue).then(item => item.getLabel(lang))
+      return fetchEntityById(propertyValue).then(item => item.getLabel(lang))
     } else {
       return Promise.resolve(propertyValue)
     }
   }
 }
 
-export default WikibaseItem
+export default WikibaseEntity
