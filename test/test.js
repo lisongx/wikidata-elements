@@ -14,6 +14,16 @@ describe('wd-entity', function() {
     }
   })
 
+  const assertTextContent = (done, html, textContent) => {
+    document.body.innerHTML = html
+    const item = document.querySelector('wd-entity')
+    assert.equal(item.textContent, '')
+    setTimeout(() => {
+      assert.equal(item.textContent, textContent)
+      done()
+    }, 1000)
+  }
+
   describe('element creation', function() {
     it('creates from document.createElement', function() {
       const el = document.createElement('wd-entity')
@@ -26,47 +36,23 @@ describe('wd-entity', function() {
     })
   })
 
-  describe('wd-item label display', function() {
+  describe('wd-entity label display', function() {
     it('use en lang', function(done) {
-      document.body.innerHTML = '<wd-entity id="Q42" label lang="en"/>'
-      const item = document.querySelector('wd-entity')
-      assert.equal(item.textContent, '')
-      setTimeout(() => {
-        assert.equal(item.textContent, 'Douglas Adams')
-        done()
-      }, 1500)
+      assertTextContent(done, '<wd-entity id="Q42" label lang="en"/>', 'Douglas Adams')
     })
 
     it('use zh-hans', function(done) {
-      document.body.innerHTML = '<wd-entity id="Q42" label lang="zh-hans"/>'
-      const item = document.querySelector('wd-entity')
-      assert.equal(item.textContent, '')
-      setTimeout(() => {
-        assert.equal(item.textContent, '道格拉斯·亚当斯')
-        done()
-      }, 1500)
+      assertTextContent(done, '<wd-entity id="Q42" label lang="zh-hans"/>', '道格拉斯·亚当斯')
     })
   })
 
   describe('wd-entity property display', function() {
     it('should render external id property', function(done) {
-      document.body.innerHTML = '<wd-entity id="Q42" property="P345" />'
-      const item = document.querySelector('wd-entity')
-      assert.equal(item.textContent, '')
-      setTimeout(() => {
-        assert.equal(item.textContent, 'nm0010930')
-        done()
-      }, 1500)
+      assertTextContent(done, '<wd-entity id="Q42" property="P345" />', 'nm0010930')
     })
 
     it('should render the label of the reference for the property', function(done) {
-      document.body.innerHTML = '<wd-entity id="Q42" property="P25" lang="en" />'
-      const item = document.querySelector('wd-entity')
-      assert.equal(item.textContent, '')
-      setTimeout(() => {
-        assert.equal(item.textContent, 'Janet Adams')
-        done()
-      }, 1500)
+      assertTextContent(done, '<wd-entity id="Q42" property="P25" lang="en" />', 'Janet Adams')
     })
   })
 })
