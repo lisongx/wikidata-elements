@@ -10,7 +10,8 @@ describe('wd-entity', function() {
     expiryStrategy: 'record',
     persister: RESTPersister,
     matchRequestsBy: {
-      headers: false
+      headers: false,
+      body: true
     }
   })
 
@@ -21,7 +22,7 @@ describe('wd-entity', function() {
     setTimeout(() => {
       assert.equal(item.textContent, textContent)
       done()
-    }, 1000)
+    }, 1500)
   }
 
   describe('element creation', function() {
@@ -38,11 +39,25 @@ describe('wd-entity', function() {
 
   describe('wd-entity label display', function() {
     it('use en lang', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" label lang="en"/>', 'Douglas Adams')
+      assertTextContent(done, '<wd-entity id="Q42" lang="en"/>', 'Douglas Adams')
     })
 
     it('use zh-hans', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" label lang="zh-hans"/>', '道格拉斯·亚当斯')
+      assertTextContent(done, '<wd-entity id="Q42" lang="zh-hans"/>', '道格拉斯·亚当斯')
+    })
+
+    it('can display label for property', function(done) {
+      assertTextContent(done, '<wd-entity id="P735" lang="en"/>', 'given name')
+    })
+  })
+
+  describe('wd-entity render description ', function() {
+    it('can render when have a description attribute and en', function(done) {
+      assertTextContent(done, '<wd-entity id="Q42" description lang="en"/>', 'British author and humorist')
+    })
+
+    it('can render when have a description attribute and zh lang', function(done) {
+      assertTextContent(done, '<wd-entity id="Q42" description lang="zh-hant"/>', '英國作家')
     })
   })
 

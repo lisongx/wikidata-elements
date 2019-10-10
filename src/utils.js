@@ -7,23 +7,25 @@ const wbk = WBK({
   sparqlEndpoint: 'https://query.wikidata.org/sparql'
 })
 
-async function fetchEntitiesByIds(itemIds) {
-  const url = wbk.getEntities(itemIds)
+async function fetchEntitiesByIds({ids}) {
+  const url = wbk.getEntities({ids})
   let response = await fetch(url)
   let res = await response.json()
   const {entities} = res
   const entityInstances = Object()
-  for (let [itemId, entity] of Object.entries(entities)) {
-    entityInstances[itemId] = new WikibaseEntity(entity)
+  for (let [entityId, entity] of Object.entries(entities)) {
+    entityInstances[entityId] = new WikibaseEntity(entity)
   }
   return entityInstances
 }
 
-async function fetchEntityById(itemId) {
-  let entities = await fetchEntitiesByIds([itemId])
-  return entities[itemId]
+async function fetchEntity({id}) {
+  let entities = await fetchEntitiesByIds({
+    ids: [id]
+  })
+  return entities[id]
 }
 
 export default fetchEntitiesByIds
 
-export {fetchEntityById, wbk}
+export {fetchEntity, wbk}

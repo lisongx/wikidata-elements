@@ -1,4 +1,4 @@
-import {fetchEntityById} from './utils'
+import {fetchEntity} from './utils'
 
 class WDEntityElement extends HTMLElement {
   constructor() {
@@ -12,21 +12,20 @@ class WDEntityElement extends HTMLElement {
 
   renderItem(entityId) {
     const property = this.getAttribute('property')
-    const displayLabel = this.hasAttribute('label')
+    const description = this.hasAttribute('description')
     const lang = this.getAttribute('lang')
 
-    fetchEntityById(entityId).then(entity => {
+    fetchEntity({id: entityId}).then(entity => {
       let q = null
 
-      if (displayLabel) {
-        q = entity.getLabel(lang)
+      if (description) {
+        q = entity.getDescription(lang)
       } else if (property) {
         q = entity.getProperty(property, lang)
       } else {
-        this.textContent = ''
-        return
+        q = entity.getLabel(lang)
       }
-      q.then(value => {
+      return q.then(value => {
         this.textContent = value
       })
     })

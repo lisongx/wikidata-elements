@@ -1,4 +1,4 @@
-import {fetchEntityById, wbk} from './utils'
+import {fetchEntity, wbk} from './utils'
 
 class WikibaseEntity {
   constructor(entity) {
@@ -11,11 +11,15 @@ class WikibaseEntity {
     return Promise.resolve(this.simplifyEntity.labels[lang])
   }
 
+  getDescription(lang) {
+    return Promise.resolve(this.simplifyEntity.descriptions[lang])
+  }
+
   getProperty(property, lang) {
     const propertyValue = this.simplifyEntity.claims[property]
 
     if (wbk.isItemId(propertyValue)) {
-      return fetchEntityById(propertyValue).then(item => item.getLabel(lang))
+      return fetchEntity({id: propertyValue}).then(item => item.getLabel(lang))
     } else {
       return Promise.resolve(propertyValue)
     }
