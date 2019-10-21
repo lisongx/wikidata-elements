@@ -20,6 +20,12 @@ or just include the umd build using the CDN url
 
 ## Usage
 
+Import the package if you installed it from npm:
+
+```javascript
+import 'wikidata-elements'
+```
+
 ###  \<wd-entity\>
 
 * Render entity's label
