@@ -1,5 +1,7 @@
 # wikidata-elements
 
+⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be chaning very often**
+
 [![Build Status](https://travis-ci.org/lisongx/wd-elements.svg?branch=master)](https://travis-ci.org/lisongx/wd-elements)
 
 ## Installation
@@ -13,9 +15,8 @@ $ npm install wikidata-elements
 or just include the umd build using the CDN url
 
 ```html
-<script src="https://unpkg.com/wikidata-elements@0.0.1/dist/wd-elements.umd.js"></script>>
+<script src="https://unpkg.com/wikidata-elements@0.0.1/dist/wd-elements.umd.js"></script>
 ```
-
 
 ## Usage
 
@@ -44,7 +45,59 @@ or just include the umd build using the CDN url
 ```
 =>  ```nm0010930```
 
+## 1st Example: Make your own wikipedia infobox
 
+Simple markup for access the data you need from **Wikidata**
+
+```html
+<section id="douglas">
+  <h1>
+    <wd-entity id="Q42" label lang="en"/>
+  </h1>
+  <table>
+    <tr>
+      <th>Profession</td>
+      <td><wd-entity id="Q42" description lang="en"/></td>
+    </tr>
+    <tr>
+      <th>Place of Birth</td>
+      <td><wd-entity id="Q42" property="P19" lang="en"/></td>
+    </tr>
+    <tr>
+      <th>Height</td>
+      <td><wd-entity id="Q42" property="P2048" lang="en"></wd-entity>m</td>
+    </tr>
+    <tr>
+      <th>Website</td>
+      <td><wd-entity id="Q42" property="P856" lang="en"/></td>
+    </tr>
+  </table>
+</section>
+```
+
+Style it whatever you want it, using the tool you have
+
+```css
+  <style>
+    #douglas h1 {
+      color: #BF6766;
+    }
+    #douglas table {
+      text-align: center;
+      color: #e9e9e9;
+      background: #AF5F3C;
+    }
+    #douglas table th {
+      padding: 10px;
+      background-color: #F05E1C;
+    }
+
+  </style>
+```
+
+You would then have this in the page
+
+<img width="331" alt="Your infobox" src="https://user-images.githubusercontent.com/349342/67250338-e35ce880-f462-11e9-9015-cc1e21f1a249.png">
 
 ## Tests
 
