@@ -1,7 +1,7 @@
 {
   "name": "wd-elements",
   "version": "0.0.1",
-  "description": "Web Component",
+  "description": "Web Component to access data from Wikidata",
   "main": "dist/wd-elements.umd.js",
   "module": "dist/wd-elements.js",
   "types": "index.d.ts",
