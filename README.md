@@ -1,8 +1,20 @@
 # wikidata-elements
 
-Custom elements in the web for reusing [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page)
-
 [![Build Status](https://travis-ci.org/lisongx/wd-elements.svg?branch=master)](https://travis-ci.org/lisongx/wd-elements)
+
+## Installation
+
+Install via npm
+
+```
+$ npm install wikidata-elements
+```
+
+or just include the umd build using the CDN url
+
+```html
+<script src="https://unpkg.com/wikidata-elements@0.0.1/dist/wd-elements.umd.js"></script>>
+```
 
 
 ## Usage
