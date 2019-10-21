@@ -54,5 +54,10 @@
     "dataloader": "^1.4.0",
     "setimmediate": "^1.0.5",
     "wikibase-sdk": "^7.1.0"
-  }
+  },
+  "keywords": [
+    "wikidata",
+    "web-component",
+    "custom-element"
+  ]
 }
