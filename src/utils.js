@@ -1,5 +1,9 @@
+// Inject setimmediate polyfill in order to use dataloader in browser
+import 'setimmediate'
+
 import WBK from 'wikibase-sdk'
 import WikibaseEntity from './WikibaseEntity'
+import DataLoader from 'dataloader'
 
 // TODO: Expose API to allow user to set custom endpoint
 const wbk = WBK({
@@ -19,11 +23,15 @@ async function fetchEntitiesByIds({ids}) {
   return entityInstances
 }
 
+async function batchGetEntities(keys) {
+  const entities = await fetchEntitiesByIds({ids: keys})
+  return keys.map(key => entities[key])
+}
+
+const entityLoader = new DataLoader(batchGetEntities)
+
 async function fetchEntity({id}) {
-  let entities = await fetchEntitiesByIds({
-    ids: [id]
-  })
-  return entities[id]
+  return await entityLoader.load(id)
 }
 
 export default fetchEntitiesByIds
