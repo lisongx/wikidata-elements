@@ -117,6 +117,9 @@ We're using [pollyjs](https://github.com/Netflix/pollyjs) to record and replay a
 
 If you need to record new requests, remember to run `npm run record-request`.
 
+## See also
+
+* [qLabel](https://googleknowledge.github.io/qlabel/) is a jQuery plugin to translate labels in a Website based on translations from Wikidata
 
 ## Contributing
 
