@@ -2,7 +2,7 @@
 
 ⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be chaning very often**
 
-[![Build Status](https://travis-ci.org/lisongx/wd-elements.svg?branch=master)](https://travis-ci.org/lisongx/wd-elements)
+[![Build Status](https://travis-ci.org/lisongx/wikidata-elements.svg?branch=master)](https://travis-ci.org/lisongx/wikidata-elements)
 
 ## Installation
 
