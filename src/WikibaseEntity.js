@@ -24,6 +24,22 @@ class WikibaseEntity {
       return Promise.resolve(propertyValue)
     }
   }
+
+  getSiteLink(sitenames) {
+    const sitelinks = this.entity.sitelinks;
+
+    for (var sitename of sitenames) {
+      const sitelink = sitelinks[sitename]
+      if (sitelink) {
+        return Promise.resolve({
+          ...sitelink,
+          link: wbk.getSitelinkUrl(sitelink)
+        })
+      }
+    }
+
+    return Promise.reject()
+  }
 }
 
 export default WikibaseEntity

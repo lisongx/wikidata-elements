@@ -34,6 +34,11 @@ async function fetchEntity({id}) {
   return await entityLoader.load(id)
 }
 
+function parseArrayHTMLAttribute(value) {
+  const listOfValues = value.split(',')
+  return listOfValues.map(v => v.trim())
+}
+
 export default fetchEntitiesByIds
 
-export {fetchEntity, wbk}
+export {wbk, fetchEntity, parseArrayHTMLAttribute}
