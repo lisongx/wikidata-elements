@@ -1,10 +1,15 @@
-import {fetchEntity, wbk} from './utils'
+import {fetchEntity} from './utils'
+import wbk from './wbk'
 
 class WikibaseEntity {
   constructor(entity) {
-    //   Original entitiy saved for future usage
+    // Original entitiy saved for future usage
     this.entity = entity
     this.simplifyEntity = wbk.simplify.entity(entity)
+  }
+
+  static getEntity(args) {
+    return fetchEntity(args).then(entity => new WikibaseEntity(entity))
   }
 
   getLabel(lang) {
@@ -19,14 +24,14 @@ class WikibaseEntity {
     const propertyValue = this.simplifyEntity.claims[property]
 
     if (wbk.isItemId(propertyValue)) {
-      return fetchEntity({id: propertyValue}).then(item => item.getLabel(lang))
+      return this.constructor.getEntity({id: propertyValue}).then(item => item.getLabel(lang))
     } else {
       return Promise.resolve(propertyValue)
     }
   }
 
   getSiteLink(sitenames) {
-    const sitelinks = this.entity.sitelinks;
+    const sitelinks = this.entity.sitelinks
 
     for (var sitename of sitenames) {
       const sitelink = sitelinks[sitename]

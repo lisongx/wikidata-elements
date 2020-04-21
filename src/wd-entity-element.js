@@ -1,4 +1,4 @@
-import {fetchEntity} from './utils'
+import WikibaseEntity from './WikibaseEntity'
 
 class WDEntityElement extends HTMLElement {
   constructor() {
@@ -15,7 +15,7 @@ class WDEntityElement extends HTMLElement {
     const description = this.hasAttribute('description')
     const lang = this.getAttribute('lang')
 
-    fetchEntity({id: entityId}).then(entity => {
+    WikibaseEntity.getEntity({id: entityId}).then(entity => {
       let q = null
 
       if (description) {
