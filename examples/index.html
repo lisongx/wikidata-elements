@@ -12,6 +12,13 @@
       font-size: 12px;
     }
   </style>
+
+  <!-- GitHub Pages development script, uncomment when running example locally and comment out the production one -->
+  <script src="../dist/wd-elements.umd.js"></script>
+
+  <!-- GitHub Pages demo script -->
+  <!-- <script src="https://unpkg.com/@github/custom-element-boilerplate@latest/dist/index.umd.js"></script> -->
+
 </head>
 <body>
 
@@ -74,13 +81,21 @@
                 <wd-link item-id="Q42" site="enwiki, zhwiki" />
             </td>
           </tr>
+
+          <tr>
+            <td>
+              <xmp>
+                  <wd-link item-id="Q42" site="zhwiki" />
+                    <h2>This is link test</h2>
+                  </wd-link>
+              </xmp>
+            </td>
+            <td>
+                <a is="wd-link" item-id="Q42" site="zhwiki"><h2>This is link test</h2></a>
+                <wd-link item-id="Q42" site="zhwiki" /><h2>This is link test</h2></wd-link>
+            </td>
+          </tr>
       </table>
 
-
-  <!-- GitHub Pages development script, uncomment when running example locally and comment out the production one -->
-  <script src="../dist/wd-elements.umd.js"></script>
-
-  <!-- GitHub Pages demo script -->
-  <!-- <script src="https://unpkg.com/@github/custom-element-boilerplate@latest/dist/index.umd.js"></script> -->
 </body>
 </html>

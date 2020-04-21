@@ -4,13 +4,23 @@ import WikibaseEntity from './WikibaseEntity'
 class WDLinkElement extends HTMLAnchorElement {
   constructor() {
     super()
-    console.log('this inner html', this.innerHTML)
-    this.provideChildren = this.innerHTML
+    console.log('init')
+  }
+
+  static get observedAttributes() {
+    return ['item-id']
   }
 
   connectedCallback() {
     const entityId = this.getAttribute('item-id')
     this.renderElement(entityId)
+  }
+
+  attributeChangedCallback(name, _, newValue) {
+    console.log('Custom square element attributes changed.');
+    if (name == 'item-id') {
+      this.renderElement(newValue)
+    }
   }
 
   renderElement(entityId) {
@@ -27,11 +37,11 @@ class WDLinkElement extends HTMLAnchorElement {
       if (property) {
         q = entity.getProperty(property)
       } else {
-        console.log('entity', entity)
         entity.getSiteLink(parseArrayHTMLAttribute(site)).then(({link, title}) => {
+          console.log('link', link)
           this.setAttribute('href', link)
-          if (!this.providedText) {
-            this.textContent = title
+          if (!this.innerText) {
+            this.innerHTML = title
           }
         })
       }
