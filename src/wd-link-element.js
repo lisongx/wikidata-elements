@@ -3,7 +3,8 @@ import {fetchEntity, parseArrayHTMLAttribute} from './utils'
 class WDLinkElement extends HTMLAnchorElement {
   constructor() {
     super()
-    this.providedText = this.textContent;
+    console.log('this inner html', this.innerHTML)
+    this.provideChildren = this.innerHTML;
   }
 
   connectedCallback() {
@@ -25,6 +26,7 @@ class WDLinkElement extends HTMLAnchorElement {
       if (property) {
         q = entity.getProperty(property)
       } else {
+        console.log('entity', entity)
         entity.getSiteLink(parseArrayHTMLAttribute(site)).then(({link, title}) => {
           this.setAttribute('href', link);
           if (!this.providedText) {
@@ -34,8 +36,6 @@ class WDLinkElement extends HTMLAnchorElement {
       }
     })
   }
-
-  // disconnectedCallback() {}
 }
 
 export default WDLinkElement
