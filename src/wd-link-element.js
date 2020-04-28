@@ -35,12 +35,14 @@ class WDLinkElement extends HTMLAnchorElement {
           this.setAttribute('href', value)
         })
       } else {
-        entity.getSiteLink(parseArrayHTMLAttribute(site)).then(({link, title}) => {
-          this.setAttribute('href', link)
-          if (!this.innerText) {
-            this.innerHTML = title
-          }
-        })
+        entity
+          .getSiteLink(parseArrayHTMLAttribute(site))
+          .then(({link, title}) => {
+            this.setAttribute('href', link)
+            if (!this.innerText) {
+              this.innerHTML = title
+            }
+          })
       }
     })
   }

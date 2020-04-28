@@ -25,10 +25,14 @@ class WikibaseEntity {
 
     if (wbk.isItemId(propertyValue)) {
       if (!lang) {
-        throw new Error("You need have provide a lang argument to display the property")
+        throw new Error(
+          'You need have provide a lang argument to display the property'
+        )
       }
 
-      return this.constructor.getEntity({id: propertyValue}).then(item => item.getLabel(lang))
+      return this.constructor
+        .getEntity({id: propertyValue})
+        .then(item => item.getLabel(lang))
     } else {
       return Promise.resolve(propertyValue)
     }
