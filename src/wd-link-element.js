@@ -4,22 +4,20 @@ import WikibaseEntity from './WikibaseEntity'
 class WDLinkElement extends HTMLAnchorElement {
   constructor() {
     super()
-    console.log('init')
   }
 
   static get observedAttributes() {
-    return ['item-id']
+    return ['entity-id', 'site', 'property']
   }
 
   connectedCallback() {
-    const entityId = this.getAttribute('item-id')
+    const entityId = this.getAttribute('entity-id')
     this.renderElement(entityId)
   }
 
-  attributeChangedCallback(name, _, newValue) {
-    console.log('Custom square element attributes changed.');
-    if (name == 'item-id') {
-      this.renderElement(newValue)
+  attributeChangedCallback(_, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this.renderElement(this.getAttribute('entity-id'))
     }
   }
 
@@ -32,13 +30,12 @@ class WDLinkElement extends HTMLAnchorElement {
     }
 
     WikibaseEntity.getEntity({id: entityId}).then(entity => {
-      let q = null
-
       if (property) {
-        q = entity.getProperty(property)
+        entity.getProperty(property).then(value => {
+          this.setAttribute('href', value)
+        })
       } else {
         entity.getSiteLink(parseArrayHTMLAttribute(site)).then(({link, title}) => {
-          console.log('link', link)
           this.setAttribute('href', link)
           if (!this.innerText) {
             this.innerHTML = title

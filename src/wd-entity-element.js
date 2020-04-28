@@ -6,7 +6,8 @@ class WDEntityElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const entityId = this.getAttribute('id')
+    // TODO: deprecate the use of "id", since that's a built-in attribute in html
+    const entityId = this.getAttribute('entity-id') || this.getAttribute('id')
     this.renderItem(entityId)
   }
 

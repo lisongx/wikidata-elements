@@ -39,35 +39,35 @@ describe('wd-entity', function() {
 
   describe('wd-entity label display', function() {
     it('use en lang', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" lang="en"/>', 'Douglas Adams')
+      assertTextContent(done, '<wd-entity entity-id="Q42" lang="en"/>', 'Douglas Adams')
     })
 
     it('use zh-hans', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" lang="zh-hans"/>', '道格拉斯·亚当斯')
+      assertTextContent(done, '<wd-entity entity-id="Q42" lang="zh-hans"/>', '道格拉斯·亚当斯')
     })
 
     it('can display label for property', function(done) {
-      assertTextContent(done, '<wd-entity id="P735" lang="en"/>', 'given name')
+      assertTextContent(done, '<wd-entity entity-id="P735" lang="en"/>', 'given name')
     })
   })
 
   describe('wd-entity render description ', function() {
     it('can render when have a description attribute and en', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" description lang="en"/>', 'British author and humorist')
+      assertTextContent(done, '<wd-entity entity-id="Q42" description lang="en"/>', 'British author and humorist')
     })
 
     it('can render when have a description attribute and zh lang', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" description lang="zh-hant"/>', '英國作家')
+      assertTextContent(done, '<wd-entity entity-id="Q42" description lang="zh-hant"/>', '英國作家')
     })
   })
 
   describe('wd-entity property display', function() {
     it('should render external id property', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" property="P345" />', 'nm0010930')
+      assertTextContent(done, '<wd-entity entity-id="Q42" property="P345" />', 'nm0010930')
     })
 
     it('should render the label of the reference for the property', function(done) {
-      assertTextContent(done, '<wd-entity id="Q42" property="P25" lang="en" />', 'Janet Adams')
+      assertTextContent(done, '<wd-entity entity-id="Q42" property="P25" lang="en" />', 'Janet Adams')
     })
   })
 })
