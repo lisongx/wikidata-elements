@@ -31,7 +31,7 @@ import 'wikidata-elements'
 * Render entity's label
 
 ```html
-<wd-entity id="Q42" label lang="en">
+<wd-entity entity-id="Q42" label lang="en">
 ```
 
 =>  ```Douglas Adams```
@@ -39,7 +39,7 @@ import 'wikidata-elements'
 * Render entity's description
 
 ```html
-<wd-entity id="Q42" description lang="en"/>
+<wd-entity entity-id="Q42" description lang="en"/>
 ```
 
 => ```British author and humorist```
@@ -47,7 +47,7 @@ import 'wikidata-elements'
 * Render entity's property
 
 ```html
-<wd-entity id="Q42" property="P345" />
+<wd-entity entity-id="Q42" property="P345" />
 ```
 =>  ```nm0010930```
 
@@ -58,24 +58,24 @@ Simple markup for access the data you need from **Wikidata**
 ```html
 <section id="douglas">
   <h1>
-    <wd-entity id="Q42" label lang="en"/>
+    <wd-entity entity-id="Q42" label lang="en"/>
   </h1>
   <table>
     <tr>
       <th>Profession</td>
-      <td><wd-entity id="Q42" description lang="en"/></td>
+      <td><wd-entity entity-id="Q42" description lang="en"/></td>
     </tr>
     <tr>
       <th>Place of Birth</td>
-      <td><wd-entity id="Q42" property="P19" lang="en"/></td>
+      <td><wd-entity entity-id="Q42" property="P19" lang="en"/></td>
     </tr>
     <tr>
       <th>Height</td>
-      <td><wd-entity id="Q42" property="P2048" lang="en"></wd-entity>m</td>
+      <td><wd-entity entity-id="Q42" property="P2048" lang="en"></wd-entity>m</td>
     </tr>
     <tr>
       <th>Website</td>
-      <td><wd-entity id="Q42" property="P856" lang="en"/></td>
+      <td><wd-entity entity-id="Q42" property="P856" lang="en"/></td>
     </tr>
   </table>
 </section>
