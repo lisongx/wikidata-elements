@@ -6,8 +6,5 @@ install: npm install
 addons:
   chrome: beta
   firefox: latest
-cache:
-  directories:
-    - node_modules
 script:
   - npm run ci
