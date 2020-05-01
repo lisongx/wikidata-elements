@@ -1,6 +1,6 @@
 # wikidata-elements
 
-⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be chaning very often**
+⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be chaning very quickly**
 
 [![Build Status](https://travis-ci.org/lisongx/wikidata-elements.svg?branch=master)](https://travis-ci.org/lisongx/wikidata-elements)
 
@@ -188,15 +188,17 @@ Then you would have this not so bad infobox in the page, try this in [JSBin](htt
 
 ## Tests
 
-To run our tests, you can just:
+We're using [pollyjs](https://github.com/Netflix/pollyjs) to record and replay all the http requests to wikidata in the test suits, this make the test cases more reliable.
+
+To run our tests locally, first start the pollyjs process to record network request
+
+```npm run listen-request```
+
+and then just run the normal
 
 ```
 npm run test
 ```
-
-We're using [pollyjs](https://github.com/Netflix/pollyjs) to record and replay all the http requests to wikidata in the test suits.
-
-If you need to record new requests, remember to run `npm run record-request`.
 
 ## See also
 
