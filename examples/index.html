@@ -12,10 +12,15 @@
       font-size: 12px;
     }
   </style>
+
+  <!-- GitHub Pages development script, uncomment when running example locally and comment out the production one -->
+  <script src="../dist/wd-elements.umd.js"></script>
+
+  <!-- GitHub Pages demo script -->
+  <!-- <script src="https://unpkg.com/@github/custom-element-boilerplate@latest/dist/index.umd.js"></script> -->
+
 </head>
 <body>
-
-
     <table>
         <tr>
           <th>HTML</th>
@@ -63,13 +68,40 @@
                 <wd-entity id="Q42" description lang='en' />
             </td>
           </tr>
+
+          <tr>
+            <td>
+              <xmp>
+                  <a is="wd-link" entity-id="Q262791" property="P856" target="_blank">Steve Reich</a>
+              </xmp>
+            </td>
+            <td>
+              <a is="wd-link" entity-id="Q262791" property="P856" target="_blank">Steve Reich</a>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td>
+              <xmp>
+                <a is="wd-link" entity-id="Q42" site="zhwiki"><h2>This is link test</h2></a>
+              </xmp>
+            </td>
+            <td>
+                <a is="wd-link" entity-id="Q42" site="zhwiki"><h2>This is link test</h2></a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <xmp>
+                <a is="wd-link" entity-id="Q80" property="P2002">tim's link</a>
+              </xmp>
+            </td>
+            <td>
+                <a is="wd-link" entity-id="Q80" property="P2002" target="_blank">tim's link</a>
+            </td>
+          </tr>
       </table>
-
-
-  <!-- GitHub Pages development script, uncomment when running example locally and comment out the production one -->
-  <script src="../dist/wd-elements.umd.js"></script>
-
-  <!-- GitHub Pages demo script -->
-  <!-- <script src="https://unpkg.com/@github/custom-element-boilerplate@latest/dist/index.umd.js"></script> -->
 </body>
 </html>

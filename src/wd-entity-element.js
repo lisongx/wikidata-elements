@@ -1,4 +1,4 @@
-import {fetchEntity} from './utils'
+import WikibaseEntity from './WikibaseEntity'
 
 class WDEntityElement extends HTMLElement {
   constructor() {
@@ -6,7 +6,8 @@ class WDEntityElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const entityId = this.getAttribute('id')
+    // TODO: deprecate the use of "id", since that's a built-in attribute in html
+    const entityId = this.getAttribute('entity-id') || this.getAttribute('id')
     this.renderItem(entityId)
   }
 
@@ -15,7 +16,7 @@ class WDEntityElement extends HTMLElement {
     const description = this.hasAttribute('description')
     const lang = this.getAttribute('lang')
 
-    fetchEntity({id: entityId}).then(entity => {
+    WikibaseEntity.getEntity({id: entityId}).then((entity) => {
       let q = null
 
       if (description) {
@@ -25,7 +26,7 @@ class WDEntityElement extends HTMLElement {
       } else {
         q = entity.getLabel(lang)
       }
-      return q.then(value => {
+      return q.then((value) => {
         this.textContent = value
       })
     })

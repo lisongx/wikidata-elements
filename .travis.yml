@@ -2,10 +2,9 @@ language: node_js
 sudo: required
 node_js:
   - "node"
+install: npm install
 addons:
   chrome: beta
-cache:
-  directories:
-    - node_modules
+  firefox: latest
 script:
   - npm run ci
