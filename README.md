@@ -15,7 +15,7 @@ $ npm install wikidata-elements
 or just include the umd build using the CDN url
 
 ```html
-<script src="https://unpkg.com/wikidata-elements@0.0.1/dist/wd-elements.umd.js"></script>
+<script src="https://unpkg.com/wikidata-elements@0.1.0/dist/wd-elements.umd.js"></script>
 ```
 
 ## Usage
