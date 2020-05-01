@@ -16,7 +16,7 @@ class WDEntityElement extends HTMLElement {
     const description = this.hasAttribute('description')
     const lang = this.getAttribute('lang')
 
-    WikibaseEntity.getEntity({id: entityId}).then(entity => {
+    WikibaseEntity.getEntity({id: entityId}).then((entity) => {
       let q = null
 
       if (description) {
@@ -26,7 +26,7 @@ class WDEntityElement extends HTMLElement {
       } else {
         q = entity.getLabel(lang)
       }
-      return q.then(value => {
+      return q.then((value) => {
         this.textContent = value
       })
     })

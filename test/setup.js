@@ -1,18 +1,15 @@
+const pollyjs = window['@pollyjs/core']
+const FetchAdapter = window['@pollyjs/adapter-fetch']
+const RESTPersister = window['@pollyjs/persister-rest']
+const Polly = pollyjs.Polly
 
-import FetchAdapter from '@pollyjs/adapter-fetch'
-import RESTPersister from '@pollyjs/persister-rest'
-import { setupMocha as setupPolly } from '@pollyjs/core';
-
-import '../src/index.js'
-
-setupPolly({
+pollyjs.setupMocha({
   adapters: [FetchAdapter],
   recordIfMissing: true,
-  expiryStrategy: 'record',
+  expiryStrategy: 'error',
   persister: RESTPersister,
   matchRequestsBy: {
     headers: false,
-    body: true
-  }
+    body: true,
+  },
 })
-

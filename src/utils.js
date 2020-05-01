@@ -18,7 +18,7 @@ async function fetchEntitiesByIds({ids}) {
 
 async function batchGetEntities(keys) {
   const entities = await fetchEntitiesByIds({ids: keys})
-  return keys.map(key => entities[key])
+  return keys.map((key) => entities[key])
 }
 
 const entityLoader = new DataLoader(batchGetEntities)
@@ -29,7 +29,7 @@ async function fetchEntity({id}) {
 
 function parseArrayHTMLAttribute(value) {
   const listOfValues = value.split(',')
-  return listOfValues.map(v => v.trim())
+  return listOfValues.map((v) => v.trim())
 }
 
 export default fetchEntitiesByIds

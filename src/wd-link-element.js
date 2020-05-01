@@ -29,20 +29,15 @@ class WDLinkElement extends HTMLAnchorElement {
       throw new Error("You need either 'property' or 'site' in the attributes")
     }
 
-    WikibaseEntity.getEntity({id: entityId}).then(entity => {
+    WikibaseEntity.getEntity({id: entityId}).then((entity) => {
       if (property) {
-        entity.getProperty(property).then(value => {
+        entity.getPropertyLink(property).then((value) => {
           this.setAttribute('href', value)
         })
       } else {
-        entity
-          .getSiteLink(parseArrayHTMLAttribute(site))
-          .then(({link, title}) => {
-            this.setAttribute('href', link)
-            if (!this.innerText) {
-              this.innerHTML = title
-            }
-          })
+        entity.getSiteLink(parseArrayHTMLAttribute(site)).then(({link}) => {
+          this.setAttribute('href', link)
+        })
       }
     })
   }

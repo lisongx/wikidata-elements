@@ -1,34 +1,30 @@
-module.exports = function(config) {
-  config.set({
-    frameworks: ["mocha", "chai"],
-    files: [
-      { pattern: 'test/setup.js', watched: false},
-      { pattern: 'test/**/test-*.js', watched: false}
-    ],
-    preprocessors: {
-      // add webpack as preprocessor
-      'test/setup.js': ['webpack'],
-      'test/**/test-*.js': ['webpack'],
-    },
-    webpack: {
-      // karma watches the test entry points
-      // (you don't need to specify the entry option)
-      // webpack watches dependencies
-      // webpack configuration
-    },
-    webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      // i. e.
-      stats: 'errors-only',
-    },
-    reporters: ['spec'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    browsers: ['ChromeHeadless', 'FirefoxHeadless'],
-    autoWatch: false,
-    singleRun: true,
-    concurrency: Infinity,
-  })
-}
+const { createDefaultConfig } = require('@open-wc/testing-karma');
+const merge = require('deepmerge');
 
+module.exports = config => {
+  config.set(
+    merge(createDefaultConfig(config), {
+      files: [
+        // runs all files ending with .test in the test folder,
+        // can be overwritten by passing a --grep flag. examples:
+        //
+        // npm run test -- --grep test/foo/bar.test.js
+        // npm run test -- --grep test/bar/*
+        './node_modules/@pollyjs/core/dist/umd/pollyjs-core.js',
+        './node_modules/@pollyjs/adapter-fetch/dist/umd/pollyjs-adapter-fetch.js',
+        './node_modules/@pollyjs/persister-rest/dist/umd/pollyjs-persister-rest.js',
+        './dist/wd-elements.umd.js',
+        { pattern: 'test/setup.js',  type: 'module'},
+        { pattern: config.grep ? config.grep : 'test/*.test.js', type: 'module' },
+      ],
+
+      // By default open-wc run on Chrome, add Firefox here
+      browsers: ['FirefoxHeadless'],
+
+      esm: {
+        nodeResolve: true,
+      },
+    }),
+  );
+  return config;
+};
