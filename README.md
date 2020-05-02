@@ -1,6 +1,6 @@
 # wikidata-elements
 
-⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be chaning very quickly**
+⚠️⚠️⚠️**This is still pretty much work in progress, API/naming will likely be changing very quickly**
 
 [![Build Status](https://travis-ci.org/lisongx/wikidata-elements.svg?branch=master)](https://travis-ci.org/lisongx/wikidata-elements)
 
