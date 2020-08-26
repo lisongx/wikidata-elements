@@ -182,7 +182,7 @@ Style it whatever you want it, using the tool you have
   </style>
 ```
 
-Then you would have this not so bad infobox in the page, try this in [JSBin](https://jsbin.com/qejiwicuze/edit?html,output) if you wanna play with it.
+Then you would have this not so bad infobox in the page, try this in [JSBin](https://jsbin.com/kazelaseya/edit?html,output) if you wanna play with it.
 
 <img width="331" alt="Your infobox" src="https://user-images.githubusercontent.com/349342/67250338-e35ce880-f462-11e9-9015-cc1e21f1a249.png">
 
